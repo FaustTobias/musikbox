@@ -1,0 +1,32 @@
+{
+  "name": "musikbox",
+  "version": "0.0.4",
+  "main": "lib",
+  "bin": "bin/index.js",
+  "types": "types",
+  "author": "Tobias Faust <tobias@faustnet.de> (https://github.com/FaustTobias)",
+  "license": "MIT",
+  "description": "This is a joke application that plays a given song using text to speech. In german.",
+  "scripts": {
+    "start": "ts-node --transpile-only src",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "jsdom": "^16.0.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@faustt/eslint-config": "^0.0.4",
+    "@types/jsdom": "^12.2.4",
+    "@types/node": "^13.5.0",
+    "@types/node-fetch": "^2.5.4",
+    "@typescript-eslint/eslint-plugin": "2.17.0",
+    "@typescript-eslint/parser": "2.17.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "prettier": "1.19.1",
+    "ts-node": "^8.6.2",
+    "typescript": "3.7.5"
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "ESNext",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "outDir": "lib"
+    },
+    "include": [
+        "**/*.ts"
+    ]
+}
