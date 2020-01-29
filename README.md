@@ -35,7 +35,7 @@ $ yarn
 $ pnpm
 ```
 
-Start without compilin
+Start without compiling
 
 ```
 $ npm run start
