@@ -3,7 +3,7 @@
         "strict": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "target": "ESNext",
+        "target": "ES2018",
         "module": "CommonJS",
         "moduleResolution": "node",
         "outDir": "lib"
