@@ -1,12 +1,18 @@
 {
   "name": "musikbox",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "lib",
   "bin": "bin/index.js",
   "types": "types",
   "author": "Tobias Faust <tobias@faustnet.de> (https://github.com/FaustTobias)",
   "license": "MIT",
   "description": "This is a joke application that plays a given song using text to speech. In german.",
+  "keywords": [
+    "text-to-speech",
+    "speech-synthesis",
+    "jukebox",
+    "joke"
+  ],
   "scripts": {
     "start": "ts-node --transpile-only src",
     "build": "tsc"
