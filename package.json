@@ -12,12 +12,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "jsdom": "^16.0.1",
+    "innertext": "^1.0.3",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@faustt/eslint-config": "^0.0.4",
-    "@types/jsdom": "^12.2.4",
     "@types/node": "^13.5.0",
     "@types/node-fetch": "^2.5.4",
     "@typescript-eslint/eslint-plugin": "2.17.0",

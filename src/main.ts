@@ -4,7 +4,13 @@ import { MacSpeechSynthesizer } from "./MacSpeechSynthesizer";
 import fs from "fs";
 import path from "path";
 import fetch from "node-fetch";
-import { JSDOM } from "jsdom";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const innertext = require("innertext");
+
+const SEARCH_TRANSLATION_REGEX = /<a\s+class\s*=\s*"go trans"\s+href="([^"]+)"/;
+const SEARCH_ORIGINAL_REGEX = /<a\s+class\s*=\s*"topHitLink"\s+href="([^"]+)"/;
+const TITLE_REGEX = /<h1>\s*<span>([^<]*).+?(?=<span class="sub">)(.+?)(?=<\/span>)/s;
+const LYRICS_REGEX = /<div id="lyrics">(.*?)<div class="brightLink/s;
 
 async function bestMatch(
     query: string,
@@ -24,27 +30,24 @@ async function bestMatch(
         },
     );
     const searchHtml = await searchResponse.text();
-    const searchDom = new JSDOM(searchHtml);
+    const lyricsUrl =
+        "https://www.songtexte.com/" +
+        (SEARCH_TRANSLATION_REGEX.exec(searchHtml)?.[1] ??
+            SEARCH_ORIGINAL_REGEX.exec(searchHtml)?.[1]);
 
-    const link =
-        searchDom.window.document.body.querySelector(".topHit .trans") ||
-        searchDom.window.document.body.querySelector(".topHitLink");
-    if (!link) {
-        return null;
-    }
-    const lyricsUrl = "https://www.songtexte.com/" + (link as any).href;
     const lyricsResponse = await fetch(lyricsUrl);
     const lyricsHtml = await lyricsResponse.text();
-    const lyricsDom = new JSDOM(lyricsHtml);
-    const titleElement = lyricsDom.window.document.querySelector("h1");
-    const title = titleElement
-        ? titleElement.textContent || "Kein Titel vorhanden"
-        : "Kein Titel vorhanden";
-    const lyricsElement = lyricsDom.window.document.body.querySelector(
-        "#lyrics",
-    );
-    const lyrics = lyricsElement
-        ? lyricsDom.window.document.body.querySelector("#lyrics")!.textContent!
+    const titleMatch = TITLE_REGEX.exec(lyricsHtml);
+    const title =
+        (titleMatch
+            ? titleMatch?.[1] +
+              ", " +
+              (titleMatch?.[2] ? innertext(titleMatch[2]) : "")
+            : "Kein Titel gefunden uuuuuuuuuuuuuuuuuuuu") + ";";
+
+    const lyricsMatch = LYRICS_REGEX.exec(lyricsHtml);
+    const lyrics = lyricsMatch?.[0]
+        ? innertext(lyricsMatch[0] + '">')
         : "Kein Songtext vorhanden :sadface:";
 
     return {
