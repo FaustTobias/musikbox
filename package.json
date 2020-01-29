@@ -1,6 +1,6 @@
 {
   "name": "musikbox",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "lib",
   "bin": "bin/index.js",
   "types": "types",
