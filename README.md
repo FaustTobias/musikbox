@@ -6,6 +6,17 @@
 
 <br>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/musikbox">
+    <img alt="NPM Version" src="https://img.shields.io/npm/v/musikbox">
+  </a>
+  <a href="https://packagephobia.now.sh/result?p=musikbox">
+    <img alt="Install Size" src="https://badgen.net/packagephobia/install/musikbox">
+  </a>
+</p>
+
+<br>
+
 ## Introduction
 
 This application plays a song using text to speech. The lyrics are fetched from https://www.songtexte.com/ and the voice is generated using either ``` say ``` (macOS) or ``` System.Speech.Synthesis.SpeechSynthesizer ``` (Windows). If a german version of the lyrics exists, it is used instead, because german lyrics are obviously superior (i guess).
