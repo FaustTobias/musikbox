@@ -23,6 +23,8 @@ jobs:
         id: "current"
 
       - run: npm i
+      
+      - run: npm build
 
       - run: npm publish
         env:
